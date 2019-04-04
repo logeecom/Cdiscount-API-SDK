@@ -8,8 +8,6 @@
 
 namespace Sdk\ConfigTools;
 
-use Zend\Config\Exception\InvalidArgumentException;
-
 class ConfigFileLoader
 {
 
@@ -18,23 +16,13 @@ class ConfigFileLoader
     /**
      * @var Singleton $instance
      */
-    private static $_instance = null;
+    private static $_instance;
 
     /**
-     * @var Data in the config file
+     * @var array of config parameters
      */
-    private $_fileData = null;
+    private $_configurationParameters;
 
-    /**
-     * @var String Api mode to load the specific environnement config file (recette,preprod,prod)
-     */
-    private $_apiMode = null;
-
-
-    /**
-     * @var \Zend\Validator\NotEmpty for string
-     */
-    private $_zendValidator = null;
 
     #endregion Private attributes
 
@@ -42,8 +30,7 @@ class ConfigFileLoader
 
     private function __construct() {
 
-        $this->_zendValidator = new \Zend\Validator\NotEmpty();
-        $this->_loadConfFile();
+        $this->_loadConfiguration();
     }
 
     #endregion Constructor
@@ -56,9 +43,10 @@ class ConfigFileLoader
      */
     public static function getInstance() {
 
-        if (is_null(self::$_instance)) {
+        if (self::$_instance === null) {
             self::$_instance = new ConfigFileLoader();
         }
+
         return self::$_instance;
     }
 
@@ -67,18 +55,13 @@ class ConfigFileLoader
     #region LoadConfigFile
 
     /**
-     * Load the default config file and after load the environnement config file
+     * Load the default config file and after load the environment config file
      */
-    private function _loadConfFile() {
+    private function _loadConfiguration() {
 
-        $reader = new \Zend\Config\Reader\Ini();
+        $configuration = new Configuration();
 
-        $configFile = $reader->fromFile(__DIR__ . '/../../../../config/config.ini');
-
-        //TODO gestion des erreurs
-        $this->_apiMode = $configFile['api']['mode'];
-
-        $this->_fileData = $reader->fromFile(__DIR__ . '/../../../../config/' . $this->_apiMode . '.config.ini');
+        $this->_configurationParameters = $configuration->getConfigurationParameters($configuration->getApiMode());
     }
 
     #endregion LoadConfigFile
@@ -86,9 +69,8 @@ class ConfigFileLoader
     #region public methods
 
     public function getConfAttribute($attr) {
-        return $this->_fileData['api'][$attr];
+        return $this->_configurationParameters['api'][$attr];
     }
 
     #endregion public methods
-
 }

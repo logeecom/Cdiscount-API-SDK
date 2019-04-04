@@ -67,7 +67,7 @@ class CDSApiSoapRequest
                 CURLOPT_VERBOSE => false,
                 CURLOPT_HEADER => true,
                 CURLOPT_POST => true,
-                CURLOPT_SSLVERSION => 4,
+                CURLOPT_SSLVERSION => 1,
                 CURLOPT_SSL_VERIFYPEER => FALSE,
                 CURLOPT_RETURNTRANSFER => TRUE,
                 CURLOPT_POSTFIELDS => $data,
