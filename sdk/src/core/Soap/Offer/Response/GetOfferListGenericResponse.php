@@ -107,7 +107,7 @@ class GetOfferListGenericResponse extends iResponse
 
             /** ShippingInfo */
             if (isset($offerXML['ShippingInformationList']) && isset($offerXML['ShippingInformationList']['ShippingInformation'])) {
-                foreach ($offerXML['ShippingInformationList']['ShippingInformation'] as $shippingInfoXML) {
+                foreach ($offerXML['ShippingInformationList'] as $shippingInfoXML) {
 
                     $shippingInfo = new ShippingInformation();
                     $shippingInfo->setAdditionalShippingCharges($shippingInfoXML['AdditionalShippingCharges']);
