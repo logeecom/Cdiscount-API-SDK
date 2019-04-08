@@ -83,7 +83,7 @@ class GetOrderListResponse extends iResponse
     private function _setOrderList()
     {
         $objOrderResult = $this->_dataResponse['s:Body']['GetOrderListResponse']['GetOrderListResult']['OrderList'];
-        
+
         $arrays = false;
         if (isset($objOrderResult['Order'])) {
             $orderResults = $objOrderResult['Order'];
@@ -153,12 +153,12 @@ class GetOrderListResponse extends iResponse
 
                     $parcelList = $this->_getParcelList($order['ParcelList']);
                     $orderObj->setParcelList($parcelList);
-                    
+
                     if (isset($order['VoucherList']) && !SoapTools::isSoapValueNull($order['VoucherList'])) {
                         $voucherList = $this->_getVoucherList($order['VoucherList']);
                         $orderObj->setVoucherList($voucherList);
                     }
-                    
+
                     $orderObj->setShippedTotalAmount(floatval($order['ShippedTotalAmount']));
 
                     $orderObj->setShippedTotalShippingCharges(floatval($order['ShippedTotalShippingCharges']));
@@ -195,6 +195,9 @@ class GetOrderListResponse extends iResponse
     private function _getAddress($objAddressResult)
     {
         $address = new Address();
+        if (!empty($objAddressResult['nil'])) {
+            return $address;
+        }
 
         $address->setAddress1($objAddressResult['Address1']);
         $address->setAddress2($objAddressResult['Address2']);
