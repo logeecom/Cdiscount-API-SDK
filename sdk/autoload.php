@@ -16,6 +16,7 @@ require_once __DIR__ . '/src/core/Common/ReportLog.php';
 require_once __DIR__ . '/src/core/Common/ReportPropertyLog.php';
 
 require_once __DIR__ . '/src/core/ConfigTools/ConfigFileLoader.php';
+require_once __DIR__ . '/src/core/ConfigTools/Configuration.php';
 
 require_once __DIR__ . '/src/core/Customer/Customer.php';
 
@@ -29,6 +30,8 @@ require_once __DIR__ . '/src/core/Discussion/Message.php';
 require_once __DIR__ . '/src/core/Discussion/OfferQuestion.php';
 require_once __DIR__ . '/src/core/Discussion/OrderQuestion.php';
 require_once __DIR__ . '/src/core/Discussion/OrderClaim.php';
+
+require_once __DIR__ . '/src/core/Exceptions/ApiErrorException.php';
 
 require_once __DIR__ . '/src/core/HttpTools/CDSApiRequest.php';
 require_once __DIR__ . '/src/core/HttpTools/CDSApiSoapRequest.php';
