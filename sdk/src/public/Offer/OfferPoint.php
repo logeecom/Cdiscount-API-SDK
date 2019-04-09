@@ -31,7 +31,7 @@ class OfferPoint
      * @param $offerPoolId
      * @return GetOfferListResponse
      */
-    public function getOfferList($productList, $offerPoolId)
+    public function getOfferList($productList, $offerPoolId = null)
     {
         $optionalsNamespaces = array('xmlns:cdis="http://www.cdiscount.com"', 'xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays"');
 
@@ -47,7 +47,10 @@ class OfferPoint
 
         $headerXML = $header->generateHeader();
         $offerFilterSoap = new OfferFilter($productList);
-        $offerFilterSoap->setOfferPoolId($offerPoolId);
+        if ($offerPoolId !== null) {
+            $offerFilterSoap->setOfferPoolId($offerPoolId);
+        }
+
         $offerFilterSoapXml = $offerFilterSoap->serialize();
         $getOfferListXML = $getOfferList->generateEnclosingBalise($headerXML . $offerFilterSoapXml);
         $bodyXML = $body->generateXML($getOfferListXML);
