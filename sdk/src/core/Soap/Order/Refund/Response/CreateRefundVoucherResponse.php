@@ -7,6 +7,7 @@
  */
 namespace Sdk\Soap\Order\Refund\Response;
 
+use Sdk\Exceptions\ApiErrorException;
 use Sdk\Order\Refund\CommercialGestureList;
 use Sdk\Order\Refund\RefundInformationMessage;
 use Sdk\Order\Refund\SellerRefundResult;
@@ -63,11 +64,19 @@ class CreateRefundVoucherResponse extends iResponse
     {
         return $this->_sellerRefundResult;
     }
-    
+
+    /**
+     * CreateRefundVoucherResponse constructor.
+     *
+     * @param $response
+     *
+     * @throws ApiErrorException
+     */
     public function __construct($response) 
     {
         $reader = new \Zend\Config\Reader\Xml();
         $this->_dataResponse = $reader->fromString($response);
+        $this->validateApiResponse($this->_dataResponse);
         $this->_errorList = array();
         
         // Check For error message

@@ -36,12 +36,16 @@ class ValidateOrderListResponse extends iResponse
 
     /**
      * ValidateOrderListResponse constructor.
+     *
      * @param $response
+     *
+     * @throws \Sdk\Exceptions\ApiErrorException
      */
     public function __construct($response)
     {
         $reader = new \Zend\Config\Reader\Xml();
         $this->_dataResponse = $reader->fromString($response);
+        $this->validateApiResponse($this->_dataResponse);
 
         $this->_errorList = array();
 
