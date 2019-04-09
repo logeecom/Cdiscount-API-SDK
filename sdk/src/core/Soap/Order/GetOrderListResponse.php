@@ -10,6 +10,7 @@ namespace Sdk\Soap\Order;
 
 
 use Sdk\Customer\Customer;
+use Sdk\Exceptions\ApiErrorException;
 use Sdk\Order\Corporation;
 use Sdk\Order\Order;
 use Sdk\Order\OrderLine;
@@ -47,12 +48,16 @@ class GetOrderListResponse extends iResponse
 
     /**
      * GetOrderListResponse constructor.
+     *
      * @param $response
+     *
+     * @throws ApiErrorException
      */
     public function __construct($response)
     {
         $reader = new \Zend\Config\Reader\Xml();
         $this->_dataResponse = $reader->fromString($response);
+        $this->validateApiResponse($this->_dataResponse);
 
         if ($this->isOperationSuccess($this->_dataResponse['s:Body']['GetOrderListResponse']['GetOrderListResult']))
         {

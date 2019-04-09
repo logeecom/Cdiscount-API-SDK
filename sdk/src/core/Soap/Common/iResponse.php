@@ -9,8 +9,12 @@
 namespace Sdk\Soap\Common;
 
 
+use Sdk\Exceptions\ApiErrorException;
+
 abstract class iResponse
 {
+    const DEFAULT_ERROR_MESSAGE = 'An error occurred when accessing Cdiscount API.';
+
     /**
      * @var
      */
@@ -103,5 +107,26 @@ abstract class iResponse
             return true;
         }
         return false;
+    }
+
+    /**
+     * Throws exception if response contains fault
+     *
+     * @param array $dataResponse
+     *
+     * @throws ApiErrorException
+     */
+    protected function validateApiResponse($dataResponse)
+    {
+        if (!array_key_exists('s:Body', $dataResponse)) {
+            throw new ApiErrorException(self::DEFAULT_ERROR_MESSAGE);
+        }
+
+        if (array_key_exists('s:Fault', $dataResponse['s:Body'])) {
+            $message = !empty($dataResponse['s:Body']['s:Fault']['faultstring']['_'])
+                ? ' ' . $dataResponse['s:Body']['s:Fault']['faultstring']['_'] : '';
+            throw new ApiErrorException(self::DEFAULT_ERROR_MESSAGE . $message);
+        }
+
     }
 }

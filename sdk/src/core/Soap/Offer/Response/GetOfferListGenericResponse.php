@@ -38,12 +38,16 @@ class GetOfferListGenericResponse extends iResponse
 
     /**
      * GetOfferListGenericResponse constructor.
+     *
      * @param $response
+     *
+     * @throws \Sdk\Exceptions\ApiErrorException
      */
     public function __construct($response)
     {
         $reader = new \Zend\Config\Reader\Xml();
         $this->_dataResponse = $reader->fromString($response);
+        $this->validateApiResponse($this->_dataResponse);
         $this->_offerList = array();
     }
 
