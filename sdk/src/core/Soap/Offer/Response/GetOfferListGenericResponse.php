@@ -56,7 +56,8 @@ class GetOfferListGenericResponse extends iResponse
      */
     protected function _setOfferListFromXML($offerList)
     {
-        foreach ($offerList['Offer'] as $offerXML) {
+        $allOffers = $this->isFullMultiArray($offerList['Offer']) ? $offerList['Offer'] : $offerList;
+        foreach ($allOffers as $offerXML) {
 
             $offer = new Offer();
 
@@ -111,7 +112,10 @@ class GetOfferListGenericResponse extends iResponse
 
             /** ShippingInfo */
             if (isset($offerXML['ShippingInformationList']) && isset($offerXML['ShippingInformationList']['ShippingInformation'])) {
-                foreach ($offerXML['ShippingInformationList'] as $shippingInfoXML) {
+                $allShippingInformations = $this->isFullMultiArray($offerXML['ShippingInformationList']['ShippingInformation'])
+                    ? $offerXML['ShippingInformationList']['ShippingInformation'] : $offerXML['ShippingInformationList'];
+
+                foreach ($allShippingInformations as $shippingInfoXML) {
 
                     $shippingInfo = new ShippingInformation();
                     $shippingInfo->setAdditionalShippingCharges($shippingInfoXML['AdditionalShippingCharges']);
@@ -136,5 +140,23 @@ class GetOfferListGenericResponse extends iResponse
 
             array_push($this->_offerList, $offer);
         }
+    }
+
+    /**
+     * Checks if every element of array is multidimensional
+     *
+     * @param array $array
+     *
+     * @return bool
+     */
+    private function isFullMultiArray($array)
+    {
+        foreach ($array as $item) {
+            if (!is_array($item)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
