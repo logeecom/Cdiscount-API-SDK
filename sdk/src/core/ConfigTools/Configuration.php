@@ -39,14 +39,14 @@ class Configuration
     /**
      * @var string
      */
-    private $apiMode = 'prod';
+    private static $apiMode = 'prod';
 
     /**
      * @return string
      */
     public function getApiMode()
     {
-        return $this->apiMode;
+        return self::$apiMode;
     }
 
     /**
@@ -54,7 +54,7 @@ class Configuration
      */
     public function setApiMode($apiMode)
     {
-        $this->apiMode = $apiMode;
+        self::$apiMode = $apiMode;
     }
 
     /**
@@ -77,7 +77,9 @@ class Configuration
      */
     public function setApiCredentials($username, $password)
     {
-        self::$configurationParameters[$this->apiMode]['api']['username'] = $username;
-        self::$configurationParameters[$this->apiMode]['api']['password'] = $password;
+        self::$configurationParameters[self::$apiMode]['api']['username'] =
+          $username;
+        self::$configurationParameters[self::$apiMode]['api']['password'] =
+      $password;
     }
 }
