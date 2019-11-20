@@ -67,7 +67,7 @@ class OfferPoint
      * @param $offerPoolId
      * @return GetOfferListPaginatedResponse
      */
-    public function getOfferListPaginated($productList, $offerFilter, $offerPoolId)
+    public function getOfferListPaginated($productList, $offerFilter, $offerPoolId = null)
     {
         $envelope = new Envelope();
         $body = new Body();
@@ -77,6 +77,10 @@ class OfferPoint
         $headerXML = $header->generateHeader();
         $offerFilterSoap = new OfferFilter($productList);
         $offerFilterSoap->setOfferFilter($offerFilter);
+
+        if ($offerPoolId !== null) {
+            $offerFilterSoap->setOfferPoolId($offerPoolId);
+        }
 
         $offerFilterSoapXml = $offerFilterSoap->serialize();
 
