@@ -68,7 +68,13 @@ class OfferFilter extends BaliseTool
      */
     public function serialize()
     {
-        $xml = $this->_xmlUtil->generateOpenBalise($this->offerFilterTAG);
+        $xml = $this->_xmlUtil->generateOpenBaliseWithInline($this->offerFilterTAG, array('xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays"'));
+
+        if ($this->_offerFilter != null) {
+            /** Page number **/
+            $xml .= $this->_xmlUtil->generateBalise($this->PageNumberTAG, $this->_offerFilter->getPageNumber());
+        }
+
 
         /** OfferPoolId **/
         $xml .= $this->_xmlUtil->generateBalise($this->OfferPoolIdTAG, $this->_offerPoolId);
@@ -83,11 +89,7 @@ class OfferFilter extends BaliseTool
             $xml .= $this->_xmlUtil->generateCloseBalise($this->SellerProductIdListTAG);
         }
 
-        if ($this->_offerFilter != null) {
 
-            /** Page number **/
-            $xml .= $this->_xmlUtil->generateBalise($this->PageNumberTAG, $this->_offerFilter->getPageNumber());
-        }
         $xml .= $this->_xmlUtil->generateCloseBalise($this->offerFilterTAG);
         return $xml;
     }

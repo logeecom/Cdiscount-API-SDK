@@ -15,19 +15,15 @@ error_reporting(-1);
 $client = new \Sdk\ApiClient\CDSApiClient();
 $token = $client->init();
 
-if ($token == null || !$client->isTokenValid()) {
-    echo "Oups, souci lors de la génération du token";
-    die;
-}
 
 $offerFilter = new \Sdk\Offer\OfferFilter();
 $offerFilter->setPageNumber(1);
 
 $offerPoolId = 2;
-
+$productList = ['1235'];
 $offerPoint = $client->getOfferPoint();
 
-$offerListResponse = $offerPoint->getOfferListPaginated($offerFilter, $offerPoolId);
+$offerListResponse = $offerPoint->getOfferListPaginated($productList, $offerFilter, $offerPoolId);
 
 echo "CurrentPageNumber : " . $offerListResponse->getCurrentPageNumber() . " - NumberOfPages : " . $offerListResponse->getNumberOfPages() . "<br/>";
 
