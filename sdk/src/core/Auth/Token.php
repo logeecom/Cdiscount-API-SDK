@@ -71,6 +71,14 @@ class Token
         return self::$_instance;
     }
 
+    /**
+     * Reset token instance
+     */
+    public static function resetInstance()
+    {
+        self::$_instance = null;
+    }
+
     #endregion Singleton
 
     #region Private methods

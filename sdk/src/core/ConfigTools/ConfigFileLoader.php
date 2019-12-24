@@ -50,6 +50,14 @@ class ConfigFileLoader
         return self::$_instance;
     }
 
+    /**
+     * Reset instance of ConfigFileLoader
+     */
+    public static function resetInstance()
+    {
+        self::$_instance = null;
+    }
+
     #endregion Singleton
 
     #region LoadConfigFile
