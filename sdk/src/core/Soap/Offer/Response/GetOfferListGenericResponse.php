@@ -56,6 +56,10 @@ class GetOfferListGenericResponse extends iResponse
      */
     protected function _setOfferListFromXML($offerList)
     {
+        if (!array_key_exists('Offer', $offerList)) {
+            return;
+        }
+
         $allOffers = $this->isFullMultiArray($offerList['Offer']) ? $offerList['Offer'] : $offerList;
         foreach ($allOffers as $offerXML) {
 
