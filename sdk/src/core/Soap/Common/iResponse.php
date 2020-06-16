@@ -118,11 +118,12 @@ abstract class iResponse
      */
     protected function validateApiResponse($dataResponse)
     {
-        if (!array_key_exists('s:Body', $dataResponse)) {
-            throw new ApiErrorException(self::DEFAULT_ERROR_MESSAGE);
+        if (empty($dataResponse['s:Body'])) {
+            $message = 'Could not validate response: Body is empty or not exists in response';
+            throw new ApiErrorException(self::DEFAULT_ERROR_MESSAGE . ' ' . $message);
         }
 
-        if (array_key_exists('s:Fault', $dataResponse['s:Body'])) {
+        if (!empty($dataResponse['s:Body']['s:Fault'])) {
             $message = !empty($dataResponse['s:Body']['s:Fault']['faultstring']['_'])
                 ? ' ' . $dataResponse['s:Body']['s:Fault']['faultstring']['_'] : '';
             throw new ApiErrorException(self::DEFAULT_ERROR_MESSAGE . $message);

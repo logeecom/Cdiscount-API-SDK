@@ -56,7 +56,7 @@ class GetOfferListGenericResponse extends iResponse
      */
     protected function _setOfferListFromXML($offerList)
     {
-        if (!array_key_exists('Offer', $offerList)) {
+        if (empty($offerList['Offer'])) {
             return;
         }
 
