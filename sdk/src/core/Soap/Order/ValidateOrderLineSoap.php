@@ -9,6 +9,7 @@
 namespace Sdk\Soap\Order;
 
 
+use Sdk\Order\Validate\ValidateOrderLine;
 use Sdk\Soap\BaliseTool;
 
 class ValidateOrderLineSoap extends BaliseTool
@@ -17,14 +18,15 @@ class ValidateOrderLineSoap extends BaliseTool
     private $_AcceptationStateTAG = 'AcceptationState';
     private $_ProductConditionTAG = 'ProductCondition';
     private $_SellerProductIdTAG = 'SellerProductId';
-    
+    private $_SkuTAG = 'Sku';
+
     /*
      * @ var string TAG
      */
     private $_TypeOfReturnTAG = 'TypeOfReturn';
-    
+
     /**
-     * @var \Sdk\Order\ValidateOrderLine
+     * @var ValidateOrderLine
      */
     private $_validateOrderLine = null;
 
@@ -46,6 +48,7 @@ class ValidateOrderLineSoap extends BaliseTool
         $xml .= $this->_xmlUtil->generateBalise($this->_ProductConditionTAG, $this->_validateOrderLine->getProductCondition());
         $xml .= $this->_xmlUtil->generateBalise($this->_SellerProductIdTAG, $this->_validateOrderLine->getSellerProductId());
         $xml .= $this->_xmlUtil->generateBalise($this->_TypeOfReturnTAG, $this->_validateOrderLine->getTypeOfReturn());
+        $xml .= $this->_xmlUtil->generateBalise($this->_SkuTAG, $this->_validateOrderLine->getSku());
 
         $xml .= $this->_generateCloseBalise();
         return $xml;
