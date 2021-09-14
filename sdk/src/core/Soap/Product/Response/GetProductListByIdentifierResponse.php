@@ -33,6 +33,9 @@ class GetProductListByIdentifierResponse extends iResponse
     {
         $reader = new \Zend\Config\Reader\Xml();
         $this->_dataResponse = $reader->fromString($response);
+        if (empty($this->_dataResponse['s:Body'])) {
+            return;
+        }
 
         // Check For error message
         if ($this->isOperationSuccess($this->_dataResponse['s:Body']['GetProductListByIdentifierResponse']['GetProductListByIdentifierResult']))
@@ -80,8 +83,11 @@ class GetProductListByIdentifierResponse extends iResponse
      */
     private function _getProductList()
     {
-        foreach ($this->_dataResponse['s:Body']['GetProductListByIdentifierResponse']['GetProductListByIdentifierResult']['a:ProductListByIdentifier']['a:ProductByIdentifier'] as $productXML) {                 
-           
+        foreach ($this->_dataResponse['s:Body']['GetProductListByIdentifierResponse']['GetProductListByIdentifierResult']['a:ProductListByIdentifier']['a:ProductByIdentifier'] as $productXML) {
+            if (empty($productXML['a:Ean'])) {
+                continue;
+            }
+
             $product = new ProductIdentity($productXML['a:Ean']);                
             if($productXML['a:HasError'] == 'true')
             {
