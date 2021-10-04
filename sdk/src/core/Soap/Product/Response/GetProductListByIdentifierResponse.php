@@ -83,8 +83,12 @@ class GetProductListByIdentifierResponse extends iResponse
      */
     private function _getProductList()
     {
-        foreach ($this->_dataResponse['s:Body']['GetProductListByIdentifierResponse']['GetProductListByIdentifierResult']['a:ProductListByIdentifier']['a:ProductByIdentifier'] as $productXML) {
-            if (empty($productXML['a:Ean'])) {
+        $productsArray = array_key_exists('a:Ean', $this->_dataResponse['s:Body']['GetProductListByIdentifierResponse']['GetProductListByIdentifierResult']['a:ProductListByIdentifier']['a:ProductByIdentifier'])?
+            $this->_dataResponse['s:Body']['GetProductListByIdentifierResponse']['GetProductListByIdentifierResult']['a:ProductListByIdentifier']:
+            $this->_dataResponse['s:Body']['GetProductListByIdentifierResponse']['GetProductListByIdentifierResult']['a:ProductListByIdentifier']['a:ProductByIdentifier'];
+
+        foreach ($productsArray as $productXML) {
+            if (empty($productXML['a:Ean']) || SoapTools::isSoapValueNull($productXML['a:Ean'])) {
                 continue;
             }
 
