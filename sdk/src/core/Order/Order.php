@@ -9,6 +9,8 @@
 namespace Sdk\Order;
 
 
+use Sdk\Soap\Common\SoapTools;
+
 class Order
 {
     /**
@@ -242,7 +244,9 @@ class Order
      */
     public function setLastUpdatedDate($lastUpdatedDate)
     {
-        $this->_lastUpdatedDate = $lastUpdatedDate;
+        if (!SoapTools::isSoapValueNull($lastUpdatedDate)) {
+            $this->_lastUpdatedDate = $lastUpdatedDate;
+        }
     }
 
     /**
@@ -306,7 +310,9 @@ class Order
      */
     public function setShippingCode($shippingCode)
     {
-        $this->_shippingCode = $shippingCode;
+        if (!SoapTools::isSoapValueNull($shippingCode)) {
+            $this->_shippingCode = $shippingCode;
+        }
     }
 
     #region SiteCommission
@@ -329,7 +335,9 @@ class Order
      */
     public function setSiteCommissionPromisedAmount($siteCommissionPromisedAmount)
     {
-        $this->_siteCommissionPromisedAmount = $siteCommissionPromisedAmount;
+        if (!SoapTools::isSoapValueNull($siteCommissionPromisedAmount)) {
+            $this->_siteCommissionPromisedAmount = $siteCommissionPromisedAmount;
+        }
     }
 
     /**
@@ -350,7 +358,9 @@ class Order
      */
     public function setSiteCommissionShippedAmount($siteCommissionShippedAmount)
     {
-        $this->_siteCommissionShippedAmount = $siteCommissionShippedAmount;
+        if (!SoapTools::isSoapValueNull($siteCommissionShippedAmount)) {
+            $this->_siteCommissionShippedAmount = $siteCommissionShippedAmount;
+        }
     }
 
     /**
@@ -371,7 +381,9 @@ class Order
      */
     public function setSiteCommissionValidatedAmount($siteCommissionValidatedAmount)
     {
-        $this->_siteCommissionValidatedAmount = $siteCommissionValidatedAmount;
+        if (!SoapTools::isSoapValueNull($siteCommissionValidatedAmount)) {
+            $this->_siteCommissionValidatedAmount = $siteCommissionValidatedAmount;
+        }
     }
 
     #endregion
@@ -396,7 +408,9 @@ class Order
      */
     public function setStatus($status)
     {
-        $this->_status = $status;
+        if (!SoapTools::isSoapValueNull($status)) {
+            $this->_status = $status;
+        }
     }
 
     /**
@@ -417,7 +431,9 @@ class Order
      */
     public function setOrderState($orderState)
     {
-        $this->_orderState = $orderState;
+        if (!SoapTools::isSoapValueNull($orderState)) {
+            $this->_orderState = $orderState;
+        }
     }
 
     /**
@@ -438,7 +454,9 @@ class Order
      */
     public function setValidationStatus($validationStatus)
     {
-        $this->_validationStatus = $validationStatus;
+        if (!SoapTools::isSoapValueNull($validationStatus)) {
+            $this->_validationStatus = $validationStatus;
+        }
     }
 
     #endregion Status
@@ -463,7 +481,9 @@ class Order
      */
     public function setShippedTotalAmount($shippedTotalAmount)
     {
-        $this->_shippedTotalAmount = $shippedTotalAmount;
+        if (!SoapTools::isSoapValueNull($shippedTotalAmount)) {
+            $this->_shippedTotalAmount = $shippedTotalAmount;
+        }
     }
 
     /**
@@ -484,7 +504,9 @@ class Order
      */
     public function setShippedTotalShippingCharges($shippedTotalShippingCharges)
     {
-        $this->_shippedTotalShippingCharges = $shippedTotalShippingCharges;
+        if (!SoapTools::isSoapValueNull($shippedTotalShippingCharges)) {
+            $this->_shippedTotalShippingCharges = $shippedTotalShippingCharges;
+        }
     }
 
     /**
@@ -505,7 +527,9 @@ class Order
      */
     public function setValidatedTotalAmount($validatedTotalAmount)
     {
-        $this->_validatedTotalAmount = $validatedTotalAmount;
+        if (!SoapTools::isSoapValueNull($validatedTotalAmount)) {
+            $this->_validatedTotalAmount = $validatedTotalAmount;
+        }
     }
 
     /**
@@ -526,7 +550,9 @@ class Order
      */
     public function setValidatedTotalShippingCharges($validatedTotalShippingCharges)
     {
-        $this->_validatedTotalShippingCharges = $validatedTotalShippingCharges;
+        if (!SoapTools::isSoapValueNull($validatedTotalShippingCharges)) {
+            $this->_validatedTotalShippingCharges = $validatedTotalShippingCharges;
+        }
     }
 
     #endregion Amount and Shipping Charges
@@ -549,7 +575,9 @@ class Order
      */
     public function setVisaCegid($visaCegid)
     {
-        $this->_visaCegid = $visaCegid;
+        if (!SoapTools::isSoapValueNull($visaCegid)) {
+            $this->_visaCegid = $visaCegid;
+        }
     }
 
     #region ParcelList
@@ -639,12 +667,12 @@ class Order
     {
         $this->_partnerOrderRef = $partnerOrderRef;
     }
-    
+
     /*
      * @var array
      */
     private $_voucherList = null;
-    
+
     /*
      * @return array
      */
@@ -652,7 +680,7 @@ class Order
     {
         return $this->_voucherList;
     }
-    
+
     /*
      * @param $voucherList \Sdk\Order\VoucherList
      */

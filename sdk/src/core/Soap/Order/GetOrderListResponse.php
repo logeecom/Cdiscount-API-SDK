@@ -275,7 +275,7 @@ class GetOrderListResponse extends iResponse
     private function _getOrderLineList($orderLineListOBJGlobal)
     {
         $orderLines = $orderLineListOBJGlobal['OrderLine'];
-        if (isset($orderLines['ProductId'])){
+        if (isset($orderLines['ProductId']) && !SoapTools::isSoapValueNull($orderLines['ProductId'])){
             $orderLines = array($orderLines);
         }
 
@@ -350,13 +350,16 @@ class GetOrderListResponse extends iResponse
             $parcelObj->setParcelStatus($parcel['ParcelStatus']);
             $parcelObj->setRealCarrierCode($parcel['RealCarrierCode']);
 
-            foreach ($parcel['ParcelItemList'] as $parcelItem) {
+            if (isset($parcel['ParcelItemList']) && !SoapTools::isSoapValueNull($parcel['ParcelItemList'])) {
+                foreach ($parcel['ParcelItemList'] as $parcelItem) {
+                    if (!SoapTools::isSoapValueNull($parcelItem['Sku'])) {
+                        $parcelItemObj = new ParcelItem($parcelItem['Sku']);
+                        $parcelItemObj->setQuantity(intval($parcelItem['Quantity']));
+                        $parcelItemObj->setProductName($parcelItem['ProductName']);
 
-                $parcelItemObj = new ParcelItem($parcelItem['Sku']);
-                $parcelItemObj->setQuantity(intval($parcelItem['Quantity']));
-                $parcelItemObj->setProductName($parcelItem['ProductName']);
-
-                $parcelObj->getParcelItemList()->addParcelItem($parcelItemObj);
+                        $parcelObj->getParcelItemList()->addParcelItem($parcelItemObj);
+                    }
+                }
             }
 
             $trackingList = new TrackingList();
@@ -382,6 +385,7 @@ class GetOrderListResponse extends iResponse
                     {
                         $trackingObj->setInsertDate($tracking['InsertDate']);
                     }
+
                     $trackingList->addTrackingToLit($trackingObj);
                 }
                 $parcelObj->setTrackingList($trackingList);

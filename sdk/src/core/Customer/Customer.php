@@ -9,6 +9,8 @@
 namespace Sdk\Customer;
 
 
+use Sdk\Soap\Common\SoapTools;
+
 class Customer
 {
     /**
@@ -29,7 +31,9 @@ class Customer
      */
     public function setCivility($civility)
     {
-        $this->_civility = $civility;
+        if (!SoapTools::isSoapValueNull($civility)) {
+            $this->_civility = $civility;
+        }
     }
 
     /**
@@ -63,7 +67,9 @@ class Customer
      */
     public function setEmail($email)
     {
-        $this->_email = $email;
+        if (!SoapTools::isSoapValueNull($email)) {
+            $this->_email = $email;
+        }
     }
 
     /**
@@ -84,7 +90,9 @@ class Customer
      */
     public function setEncryptedEmail($encryptedEmail)
     {
-        $this->_encryptedEmail = $encryptedEmail;
+        if (!SoapTools::isSoapValueNull($encryptedEmail)) {
+            $this->_encryptedEmail = $encryptedEmail;
+        }
     }
 
     /**
@@ -105,7 +113,9 @@ class Customer
      */
     public function setFirstName($firstName)
     {
-        $this->_firstName = $firstName;
+        if (!SoapTools::isSoapValueNull($firstName)) {
+            $this->_firstName = $firstName;
+        }
     }
 
     /**
@@ -126,7 +136,9 @@ class Customer
      */
     public function setLastName($lastName)
     {
-        $this->_lastName = $lastName;
+        if (!SoapTools::isSoapValueNull($lastName)) {
+            $this->_lastName = $lastName;
+        }
     }
 
     /**
@@ -147,7 +159,9 @@ class Customer
      */
     public function setMobilePhone($mobilePhone)
     {
-        $this->_mobilePhone = $mobilePhone;
+        if (!SoapTools::isSoapValueNull($mobilePhone)) {
+            $this->_mobilePhone = $mobilePhone;
+        }
     }
 
     /**
@@ -168,7 +182,9 @@ class Customer
      */
     public function setPhone($phone)
     {
-        $this->_phone = $phone;
+        if (!SoapTools::isSoapValueNull($phone)) {
+            $this->_phone = $phone;
+        }
     }
 
     /**
@@ -189,7 +205,9 @@ class Customer
      */
     public function setShippingFirstName($shippingFirstName)
     {
-        $this->_shippingFirstName = $shippingFirstName;
+        if (!SoapTools::isSoapValueNull($shippingFirstName)) {
+            $this->_shippingFirstName = $shippingFirstName;
+        }
     }
 
     /**
@@ -210,7 +228,9 @@ class Customer
      */
     public function setShippingLastName($shippingLastName)
     {
-        $this->_shippingLastName = $shippingLastName;
+        if (!SoapTools::isSoapValueNull($shippingLastName)) {
+            $this->_shippingLastName = $shippingLastName;
+        }
     }
 
     /**
@@ -231,7 +251,9 @@ class Customer
      */
     public function setSecondPhone($secondPhone)
     {
-        $this->_secondPhone = $secondPhone;
+        if (!SoapTools::isSoapValueNull($secondPhone)) {
+            $this->_secondPhone = $secondPhone;
+        }
     }
 
     /**

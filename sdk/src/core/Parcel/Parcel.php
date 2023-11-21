@@ -9,6 +9,8 @@
 namespace Sdk\Parcel;
 
 
+use Sdk\Soap\Common\SoapTools;
+
 class Parcel
 {
     /**
@@ -29,7 +31,9 @@ class Parcel
      */
     public function setCustomerNum($customerNum)
     {
-        $this->_customerNum = $customerNum;
+        if (!SoapTools::isSoapValueNull($customerNum)) {
+            $this->_customerNum = $customerNum;
+        }
     }
 
     /**
@@ -50,7 +54,9 @@ class Parcel
      */
     public function setExternalCarrierName($externalCarrierName)
     {
-        $this->_externalCarrierName = $externalCarrierName;
+        if (!SoapTools::isSoapValueNull($externalCarrierName)) {
+            $this->_externalCarrierName = $externalCarrierName;
+        }
     }
 
     /**
@@ -71,7 +77,9 @@ class Parcel
      */
     public function setExternalCarrierTrackingUrl($externalCarrierTrackingUrl)
     {
-        $this->_externalCarrierTrackingUrl = $externalCarrierTrackingUrl;
+        if (!SoapTools::isSoapValueNull($externalCarrierTrackingUrl)) {
+            $this->_externalCarrierTrackingUrl = $externalCarrierTrackingUrl;
+        }
     }
 
     /**
@@ -92,7 +100,9 @@ class Parcel
      */
     public function setCustomerReturn($customerReturn)
     {
-        $this->_customerReturn = $customerReturn;
+        if (!SoapTools::isSoapValueNull($customerReturn)) {
+            $this->_customerReturn = $customerReturn;
+        }
     }
 
     /**
@@ -113,7 +123,9 @@ class Parcel
      */
     public function setParcelStatus($parcelStatus)
     {
-        $this->_parcelStatus = $parcelStatus;
+        if (!SoapTools::isSoapValueNull($parcelStatus)) {
+            $this->_parcelStatus = $parcelStatus;
+        }
     }
 
     /**
@@ -134,7 +146,9 @@ class Parcel
      */
     public function setRealCarrierCode($realCarrierCode)
     {
-        $this->_realCarrierCode = $realCarrierCode;
+        if (!SoapTools::isSoapValueNull($realCarrierCode)) {
+            $this->_realCarrierCode = $realCarrierCode;
+        }
     }
 
     /**

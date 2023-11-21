@@ -9,6 +9,8 @@
 namespace Sdk\Order;
 
 
+use Sdk\Soap\Common\SoapTools;
+
 class Corporation
 {
 
@@ -30,7 +32,9 @@ class Corporation
      */
     public function setBusinessUnitId($businessUnitId)
     {
-        $this->_businessUnitId = $businessUnitId;
+        if (!SoapTools::isSoapValueNull($businessUnitId)) {
+            $this->_businessUnitId = $businessUnitId;
+        }
     }
 
     /**
@@ -51,7 +55,9 @@ class Corporation
      */
     public function setCorporationCode($corporationCode)
     {
-        $this->_corporationCode = $corporationCode;
+        if (!SoapTools::isSoapValueNull($corporationCode)) {
+            $this->_corporationCode = $corporationCode;
+        }
     }
 
     /**
@@ -72,7 +78,9 @@ class Corporation
      */
     public function setCorporationId($corporationId)
     {
-        $this->_corporationId = $corporationId;
+        if (!SoapTools::isSoapValueNull($corporationId)) {
+            $this->_corporationId = $corporationId;
+        }
     }
 
     /**
@@ -93,7 +101,9 @@ class Corporation
      */
     public function setCorporationName($corporationName)
     {
-        $this->_corporationName = $corporationName;
+        if (!SoapTools::isSoapValueNull($corporationName)) {
+            $this->_corporationName = $corporationName;
+        }
     }
 
     /**
@@ -114,6 +124,8 @@ class Corporation
      */
     public function setIsMarketPlaceActive($isMarketPlaceActive)
     {
-        $this->_isMarketPlaceActive = $isMarketPlaceActive;
+        if (!SoapTools::isSoapValueNull($isMarketPlaceActive)) {
+            $this->_isMarketPlaceActive = $isMarketPlaceActive;
+        }
     }
 }

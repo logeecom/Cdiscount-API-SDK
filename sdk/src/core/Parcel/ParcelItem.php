@@ -9,6 +9,8 @@
 namespace Sdk\Parcel;
 
 
+use Sdk\Soap\Common\SoapTools;
+
 class ParcelItem
 {
 
@@ -30,7 +32,9 @@ class ParcelItem
      */
     public function setProductName($productName)
     {
-        $this->_productName = $productName;
+        if (!SoapTools::isSoapValueNull($productName)) {
+            $this->_productName = $productName;
+        }
     }
 
     /**
@@ -64,7 +68,9 @@ class ParcelItem
      */
     public function setQuantity($quantity)
     {
-        $this->_quantity = $quantity;
+        if (!SoapTools::isSoapValueNull($quantity)) {
+            $this->_quantity = $quantity;
+        }
     }
 
     /**

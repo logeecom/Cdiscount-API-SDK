@@ -41,7 +41,9 @@ class OrderLine
      */
     public function setAcceptationState($acceptationState)
     {
-        $this->_acceptationState = $acceptationState;
+        if (!SoapTools::isSoapValueNull($acceptationState)) {
+            $this->_acceptationState = $acceptationState;
+        }
     }
 
     /**
@@ -62,7 +64,9 @@ class OrderLine
      */
     public function setCategoryCode($categoryCode)
     {
-        $this->_categoryCode = $categoryCode;
+        if (!SoapTools::isSoapValueNull($categoryCode)) {
+            $this->_categoryCode = $categoryCode;
+        }
     }
 
     #region Delivery Dates
@@ -86,7 +90,9 @@ class OrderLine
      */
     public function setDeliveryDateMax($deliveryDateMax)
     {
-        $this->_deliveryDateMax = $deliveryDateMax;
+        if (!SoapTools::isSoapValueNull($deliveryDateMax)) {
+            $this->_deliveryDateMax = $deliveryDateMax;
+        }
     }
 
     /**
@@ -108,7 +114,9 @@ class OrderLine
      */
     public function setDeliveryDateMin($deliveryDateMin)
     {
-        $this->_deliveryDateMin = $deliveryDateMin;
+        if (!SoapTools::isSoapValueNull($deliveryDateMin)) {
+            $this->_deliveryDateMin = $deliveryDateMin;
+        }
     }
 
     #endregion Delivery dates
@@ -131,7 +139,9 @@ class OrderLine
      */
     public function setHasClaim($hasClaim)
     {
-        $this->_hasClaim = $hasClaim;
+        if (!SoapTools::isSoapValueNull($hasClaim)) {
+            $this->_hasClaim = $hasClaim;
+        }
     }
 
     /**
@@ -175,7 +185,9 @@ class OrderLine
      */
     public function setIsNegotiated($isNegotiated)
     {
-        $this->_isNegotiated = $isNegotiated;
+        if (!SoapTools::isSoapValueNull($isNegotiated)) {
+            $this->_isNegotiated = $isNegotiated;
+        }
     }
 
     /**
@@ -196,7 +208,9 @@ class OrderLine
      */
     public function setName($name)
     {
-        $this->_name = $name;
+        if (!SoapTools::isSoapValueNull($name)) {
+            $this->_name = $name;
+        }
     }
 
     //TODO add OrderLineChildList
@@ -219,7 +233,9 @@ class OrderLine
      */
     public function setProductCondition($productCondition)
     {
-        $this->_productCondition = $productCondition;
+        if (!SoapTools::isSoapValueNull($productCondition)) {
+            $this->_productCondition = $productCondition;
+        }
     }
 
     /**
@@ -253,7 +269,9 @@ class OrderLine
      */
     public function setPurchasePrice($purchasePrice)
     {
-        $this->_purchasePrice = $purchasePrice;
+        if (!SoapTools::isSoapValueNull($purchasePrice)) {
+            $this->_purchasePrice = $purchasePrice;
+        }
     }
 
     /**
@@ -274,7 +292,9 @@ class OrderLine
      */
     public function setQuantity($quantity)
     {
-        $this->_quantity = $quantity;
+        if (!SoapTools::isSoapValueNull($quantity)) {
+            $this->_quantity = $quantity;
+        }
     }
 
     private $_rowId = 0;
@@ -292,7 +312,9 @@ class OrderLine
      */
     public function setRowId($rowId)
     {
-        $this->_rowId = $rowId;
+        if (!SoapTools::isSoapValueNull($rowId)) {
+            $this->_rowId = $rowId;
+        }
     }
 
     /**
@@ -313,7 +335,9 @@ class OrderLine
      */
     public function setSellerProductId($sellerProductId)
     {
-        $this->_sellerProductId = $sellerProductId;
+        if (!SoapTools::isSoapValueNull($sellerProductId)) {
+            $this->_sellerProductId = $sellerProductId;
+        }
     }
 
     /**
@@ -335,7 +359,9 @@ class OrderLine
      */
     public function setShippingDateMax($shippingDateMax)
     {
-        $this->_shippingDateMax = $shippingDateMax;
+        if (!SoapTools::isSoapValueNull($shippingDateMax)) {
+            $this->_shippingDateMax = $shippingDateMax;
+        }
     }
 
     /**
@@ -357,7 +383,9 @@ class OrderLine
      */
     public function setShippingDateMin($shippingDateMin)
     {
-        $this->_shippingDateMin = $shippingDateMin;
+        if (!SoapTools::isSoapValueNull($shippingDateMin)) {
+            $this->_shippingDateMin = $shippingDateMin;
+        }
     }
 
     #region SKU
@@ -380,7 +408,9 @@ class OrderLine
      */
     public function setSku($sku)
     {
-        $this->_sku = $sku;
+        if (!SoapTools::isSoapValueNull($sku)) {
+            $this->_sku = $sku;
+        }
     }
 
     /**
@@ -428,7 +458,9 @@ class OrderLine
      */
     public function setUnitAdditionalShippingCharges($unitAdditionalShippingCharges)
     {
-        $this->_unitAdditionalShippingCharges = $unitAdditionalShippingCharges;
+        if (!SoapTools::isSoapValueNull($unitAdditionalShippingCharges)) {
+            $this->_unitAdditionalShippingCharges = $unitAdditionalShippingCharges;
+        }
     }
 
     /**
@@ -449,7 +481,9 @@ class OrderLine
      */
     public function setUnitShippingCharges($unitShippingCharges)
     {
-        $this->_unitShippingCharges = $unitShippingCharges;
+        if (!SoapTools::isSoapValueNull($unitShippingCharges)) {
+            $this->_unitShippingCharges = $unitShippingCharges;
+        }
     }
 
     #endregion ShippingCharges
@@ -472,7 +506,9 @@ class OrderLine
      */
     public function setCdav($cdav)
     {
-        $this->_cdav = $cdav;
+        if (!SoapTools::isSoapValueNull($cdav)) {
+            $this->_cdav = $cdav;
+        }
     }
 
     #region EAN
@@ -495,7 +531,9 @@ class OrderLine
      */
     public function setProductEan($productEan)
     {
-        $this->_productEan = $productEan;
+        if (!SoapTools::isSoapValueNull($productEan)) {
+            $this->_productEan = $productEan;
+        }
     }
 
     /**
@@ -516,7 +554,9 @@ class OrderLine
      */
     public function setProductEanGenerated($productEanGenerated)
     {
-        $this->_productEanGenerated = $productEanGenerated;
+        if (!SoapTools::isSoapValueNull($productEanGenerated)) {
+            $this->_productEanGenerated = $productEanGenerated;
+        }
     }
     #endregion EAN
     
@@ -538,6 +578,8 @@ class OrderLine
      */
     public function setRefundShippingCharges($refundShippingCharge)
     {
-        $this->_refundShippingCharges = $refundShippingCharge;
+        if (!SoapTools::isSoapValueNull($refundShippingCharge)) {
+            $this->_refundShippingCharges = $refundShippingCharge;
+        }
     }
 }
