@@ -117,7 +117,9 @@ class Order
      */
     public function setCreationDate($creationDate)
     {
-        $this->_creationDate = $creationDate;
+        if (!SoapTools::isSoapValueNull($creationDate)) {
+            $this->_creationDate = $creationDate;
+        }
     }
 
     /**
@@ -180,7 +182,9 @@ class Order
      */
     public function setInitialTotalAmount($initialTotalAmount)
     {
-        $this->_initialTotalAmount = $initialTotalAmount;
+        if (!SoapTools::isSoapValueNull($initialTotalAmount)) {
+            $this->_initialTotalAmount = $initialTotalAmount;
+        }
     }
 
     /**
@@ -268,7 +272,9 @@ class Order
      */
     public function setModifiedDate($modifiedDate)
     {
-        $this->_modifiedDate = $modifiedDate;
+        if (!SoapTools::isSoapValueNull($modifiedDate)) {
+            $this->_modifiedDate = $modifiedDate;
+        }
     }
 
     /**
@@ -335,9 +341,7 @@ class Order
      */
     public function setSiteCommissionPromisedAmount($siteCommissionPromisedAmount)
     {
-        if (!SoapTools::isSoapValueNull($siteCommissionPromisedAmount)) {
-            $this->_siteCommissionPromisedAmount = $siteCommissionPromisedAmount;
-        }
+        $this->_siteCommissionPromisedAmount = $siteCommissionPromisedAmount;
     }
 
     /**
@@ -358,9 +362,7 @@ class Order
      */
     public function setSiteCommissionShippedAmount($siteCommissionShippedAmount)
     {
-        if (!SoapTools::isSoapValueNull($siteCommissionShippedAmount)) {
-            $this->_siteCommissionShippedAmount = $siteCommissionShippedAmount;
-        }
+        $this->_siteCommissionShippedAmount = $siteCommissionShippedAmount;
     }
 
     /**
@@ -381,9 +383,7 @@ class Order
      */
     public function setSiteCommissionValidatedAmount($siteCommissionValidatedAmount)
     {
-        if (!SoapTools::isSoapValueNull($siteCommissionValidatedAmount)) {
-            $this->_siteCommissionValidatedAmount = $siteCommissionValidatedAmount;
-        }
+        $this->_siteCommissionValidatedAmount = $siteCommissionValidatedAmount;
     }
 
     #endregion
@@ -481,9 +481,7 @@ class Order
      */
     public function setShippedTotalAmount($shippedTotalAmount)
     {
-        if (!SoapTools::isSoapValueNull($shippedTotalAmount)) {
-            $this->_shippedTotalAmount = $shippedTotalAmount;
-        }
+        $this->_shippedTotalAmount = $shippedTotalAmount;
     }
 
     /**
@@ -504,9 +502,7 @@ class Order
      */
     public function setShippedTotalShippingCharges($shippedTotalShippingCharges)
     {
-        if (!SoapTools::isSoapValueNull($shippedTotalShippingCharges)) {
-            $this->_shippedTotalShippingCharges = $shippedTotalShippingCharges;
-        }
+        $this->_shippedTotalShippingCharges = $shippedTotalShippingCharges;
     }
 
     /**
@@ -527,9 +523,7 @@ class Order
      */
     public function setValidatedTotalAmount($validatedTotalAmount)
     {
-        if (!SoapTools::isSoapValueNull($validatedTotalAmount)) {
-            $this->_validatedTotalAmount = $validatedTotalAmount;
-        }
+        $this->_validatedTotalAmount = $validatedTotalAmount;
     }
 
     /**
@@ -600,7 +594,9 @@ class Order
      */
     public function setArchiveParcelList($archiveParcelList)
     {
-        $this->_archiveParcelList = $archiveParcelList;
+        if (!SoapTools::isSoapValueNull($archiveParcelList)) {
+            $this->_archiveParcelList = $archiveParcelList;
+        }
     }
 
     /**
