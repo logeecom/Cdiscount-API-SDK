@@ -26,6 +26,7 @@ use Sdk\Soap\Order\Refund\Response\CreateRefundVoucherResponse;
 use Sdk\Soap\Order\Response\ManageParcelResponse;
 use Sdk\Soap\Order\ValidateOrderList;
 use Sdk\Soap\Order\ValidateOrderListResponse;
+use SendCloud\Infrastructure\Logger\Logger;
 
 class OrderPoint
 {
@@ -82,6 +83,7 @@ class OrderPoint
         $envelopeXML = $envelope->generateXML($bodyXML);
 
         $response = $this->_sendRequest('GetOrderList', $envelopeXML);
+        Logger::logError("Orders from Cdiscount: " . $response);
 
         return new GetOrderListResponse($response);
     }
@@ -153,7 +155,7 @@ class OrderPoint
 
         return new ManageParcelResponse($response);
     }
-    
+
     /*
      * @param $createRefundVoucherRequest \Sdk\Order\Refund\CreateRefundVoucherRequest
      * @return $createRefundVoucherResponse
@@ -164,16 +166,16 @@ class OrderPoint
         $envelope->addNameSpace(' xmlns:cdis="http://www.cdiscount.com"');
         $header = new HeaderMessage();
         $body = new Body();
-        
+
         $createRefundVoucher = new CreateRefundVoucherSoap();
-        
+
         $headerXML = $header->generateHeader();
         $requestXML = $createRefundVoucher->generateCreateRefundVoucherRequestRequestXml($createRefundVoucherRequest);
-        
+
         $createRefundVoucherXML = $createRefundVoucher->generateEnclosingBalise($headerXML . $requestXML);
-        
+
         $bodyXML = $body->generateXML($createRefundVoucherXML);
-        
+
         $envelopeXML = $envelope->generateXML($bodyXML);
 
         $response = $this->_sendRequest('CreateRefundVoucher', $envelopeXML);
