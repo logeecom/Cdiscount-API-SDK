@@ -8,7 +8,6 @@
 namespace Sdk\Soap\Fulfillment\Response;
 
 use Sdk\Soap\Common\iResponse;
-use \Sdk\Fulfilment\ProductStockList;
 use \Sdk\Soap\Common\SoapTools;
 use \Sdk\Fulfilment\OrderStatusMessage;
 
@@ -38,7 +37,7 @@ class GetExternalOrderStatusResponse extends iResponse
      */
     public function __construct($response)
     {
-        $reader = new \Zend\Config\Reader\Xml();
+        $reader = new \Laminas\Config\Reader\Xml();
         $this->_dataResponse = $reader->fromString($response);
         $this->_errorList = array();
         

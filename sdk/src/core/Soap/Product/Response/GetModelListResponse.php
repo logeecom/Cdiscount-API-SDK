@@ -23,7 +23,7 @@ class GetModelListResponse extends ModelListResponse
     {
         parent::__construct('GetModelListResponse', 'GetModelListResult');
 
-        $reader = new \Zend\Config\Reader\Xml();
+        $reader = new \Laminas\Config\Reader\Xml();
         $this->_dataResponse = $reader->fromString($dataResponse);
 
         // Check For error message

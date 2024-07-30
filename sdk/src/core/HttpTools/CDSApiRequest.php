@@ -20,17 +20,17 @@ class CDSApiRequest
 {
 
     /**
-     * @var \Zend\Http\Client\Adapter\Curl
+     * @var \Laminas\Http\Client\Adapter\Curl
      */
     private $_adapter = null;
 
     /**
-     * @var \Zend\Http\Client
+     * @var \Laminas\Http\Client
      */
     private $_client = null;
 
     /**
-     * @var \Zend\Http\Request
+     * @var \Laminas\Http\Request
      */
     private $_request = null;
 
@@ -72,12 +72,12 @@ class CDSApiRequest
     {
         //$this->_setHttpHeader($username, $password);
 
-        $this->_request = new \Zend\Http\Request();
+        $this->_request = new \Laminas\Http\Request();
         $this->_request->setUri($urltoken);
         $this->_request->setMethod('GET');
 
-        $this->_client = new \Zend\Http\Client();
-        $this->_adapter = new \Zend\Http\Client\Adapter\Curl();
+        $this->_client = new \Laminas\Http\Client();
+        $this->_adapter = new \Laminas\Http\Client\Adapter\Curl();
         $this->_client->setAdapter($this->_adapter);
 
         $this->_setAdapaterOptions($username, $password);

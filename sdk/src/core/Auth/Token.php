@@ -10,7 +10,7 @@ namespace Sdk\Auth;
 
 use Sdk\ConfigTools\ConfigFileLoader;
 use Sdk\HttpTools\CDSApiRequest;
-use Zend\Db\Sql\Ddl\Column\Datetime;
+use Laminas\Db\Sql\Ddl\Column\Datetime;
 
 /**
  * Class Token

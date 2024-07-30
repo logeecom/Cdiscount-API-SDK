@@ -6,12 +6,12 @@
         "files": ["sdk/autoload.php"]
     },
     "require": {
-        "zendframework/zend-authentication": "^2.5",
-        "zendframework/zend-db": "^2.8",
-        "zendframework/zend-soap": "^2.6",
-        "zendframework/zend-http": "^2.5",
-        "zendframework/zend-log": "^2.9",
-        "zendframework/zend-config": "^2.6"
+        "laminas/laminas-authentication": "^2.13",
+        "laminas/laminas-db": "^2.18",
+        "laminas/laminas-soap": "^2.12",
+        "laminas/laminas-http": "^2.18",
+        "laminas/laminas-log": "^2.16",
+        "laminas/laminas-config": "^3.9"
     },
     "license": "GPL-3.0",
     "version": "1.0.8"

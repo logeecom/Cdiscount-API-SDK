@@ -69,7 +69,7 @@ class GetSellerInformationResponse extends iResponse
      */
     public function __construct($response)
     {
-        $reader = new \Zend\Config\Reader\Xml();
+        $reader = new \Laminas\Config\Reader\Xml();
         $this->_dataResponse = $reader->fromString($response);
 
         // Check for error messages

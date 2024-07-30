@@ -25,7 +25,7 @@ class CreateExternalOrderResponse extends iResponse
      */
     public function __construct($response)
     {
-        $reader = new \Zend\Config\Reader\Xml();
+        $reader = new \Laminas\Config\Reader\Xml();
         $this->_dataResponse = $reader->fromString($response);
         // Check For Operation Success
         if ($this->isOperationSuccess($this->_dataResponse['s:Body']['CreateExternalOrderResponse']['CreateExternalOrderResult']))

@@ -8,6 +8,7 @@
 
 namespace Sdk\Soap\Relays\Response;
 
+use Sdk\Discussion\Message;
 use Sdk\Soap\Common\iResponse;
 
 class GetParcelShopListResponse extends iResponse
@@ -38,7 +39,7 @@ class GetParcelShopListResponse extends iResponse
     public function __construct($response)
     {
 
-        $reader = new \Zend\Config\Reader\Xml();
+        $reader = new \Laminas\Config\Reader\Xml();
         $this->_dataResponse = $reader->fromString($response);
 
         // Check For error message
