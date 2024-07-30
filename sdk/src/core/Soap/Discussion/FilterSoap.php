@@ -51,7 +51,7 @@ class FilterSoap
      * @param string $xmlns
      * @param $tag
      */
-    public function __construct($xmlns = 'xmlns:i="http://www.w3.org/2001/XMLSchema-instance"', $tag)
+    public function __construct($xmlns, $tag)
     {
         $this->_xmlns = $xmlns;
         $this->_xmlUtil = new XmlUtils('');
